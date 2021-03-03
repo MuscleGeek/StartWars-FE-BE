@@ -17,7 +17,7 @@ export const Planet = props => {
 				{store.planets.map((planet, i) => (
 					<Col md={3} className="mt-1 mb-2" key={i}>
 						<Card style={{ width: "18rem" }}>
-							<Card.Img variant="top" src={props.pImg} />
+							<Card.Img variant="top" src={planet.image} />
 							<Card.Body>
 								<Card.Title>{planet.name}</Card.Title>
 								<Card.Text>
@@ -27,7 +27,7 @@ export const Planet = props => {
 									<br />
 									Gravity: {planet.terrain}
 									<br />
-									Population: {planet.poplation}
+									Population: {planet.population}
 									<br />
 								</Card.Text>
 								<ButtonToolbar
@@ -49,8 +49,4 @@ export const Planet = props => {
 			</Row>
 		</Container>
 	);
-};
-
-Planet.propTypes = {
-	pImg: PropTypes.any
 };

@@ -39,14 +39,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/planet/">
 							<Planet
-								pImg="https://cdn-3.expansion.mx/dims4/default/d9eac85/2147483647/strip/true/crop/1128x635+0+0/resize/800x450!/quality/90/?url=https%3A%2F%2Fcherry-brightspot.s3.amazonaws.com%2F21%2F6e%2F021cdd2a4155af013db038f72482%2Fstar-wars.jpg"
-								/*component={Planet}*/
+							/*component={Planet}*/
 							/>
 						</Route>
 						<Route exact path="/people/">
 							<Character
-								cImg="https://www.denofgeek.com/wp-content/uploads/2017/01/star-wars-droids.jpg?fit=1200%2C680"
-								/*component={Character}*/
+							/*component={Character}*/
 							/>
 						</Route>
 						<Route path="/infoCharacter/:fid">

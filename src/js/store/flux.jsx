@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			loadCharacters: () => {
 				//obtiener personajes obteniendo el result
-				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/people/")
+				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/people")
 					.then(res => res.json())
 					.then(data => {
 						console.table("Fetching Planet data:", data);
@@ -18,17 +18,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadPlanets: () => {
 				//obtiene todos los planetas por medio del result
-				fetch("https://swapi.dev/api/planets/")
+				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/planet")
 					.then(res => res.json())
 					.then(data => {
 						console.table("Fetching Planets data: ", data);
-						setStore({ planets: data.results });
+						setStore({ planets: data });
 					})
 					.catch(err => console.error(err));
 			},
 			loadPlanetsbyID: id => {
 				//obtener el planeta por ID @view
-				fetch("https://swapi.dev/api/planets/" + id)
+				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/planet" + id)
 					.then(res => res.json())
 					.then(data => {
 						console.table("Fetching Planets data: ", data);
@@ -38,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadCharactersbyID: id => {
 				//obtener el personaje por ID @view
-				fetch("https://swapi.dev/api/people/" + id)
+				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/people" + id)
 					.then(res => res.json())
 					.then(data => {
 						console.log("Fetching Planets data: ", data);

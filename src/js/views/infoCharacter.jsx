@@ -12,7 +12,6 @@ export const InfoCharacter = () => {
 		store.characters[
 			param.fid
 		]; /*obtenemos nuestro personaje por medio del ID para luego poderlo mostrar en un card con los los atributos obtenidos array usando parametro*/
-
 	return (
 		<Jumbotron>
 			<div className="row">

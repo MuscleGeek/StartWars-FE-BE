@@ -7,17 +7,14 @@ import { Context } from "../store/appContext.jsx";
 export const InfoPlanet = () => {
 	const { store, actions } = useContext(Context);
 	//hacer busqueda por id
-	const params = useParams();
-	const paramByID = store.planets[params.myId];
+	const param = useParams();
+	const paramByID = store.planets[param.fid];
 	return (
 		<Jumbotron>
 			<div className="row">
 				<div className="col">
 					<Card style={{ width: "18rem" }}>
-						<Card.Img
-							variant="top"
-							src="https://i.pinimg.com/originals/c8/92/85/c89285262e9a1e48f9c845a45f20a8e3.png"
-						/>
+						<Card.Img variant="top" src={paramByID.image} />
 					</Card>
 				</div>
 				<div className="col">
