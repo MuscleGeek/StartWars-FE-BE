@@ -13,6 +13,7 @@ import { InfoCharacter } from "./views/infoCharacter.jsx";
 import { Planet } from "./component/planet.jsx";
 import { Character } from "./component/character.jsx";
 import { InfoPlanet } from "./views/infoPlanet.jsx";
+import { Form } from "./component/form.jsx";
 
 //create your first component
 const Layout = () => {
@@ -27,6 +28,7 @@ const Layout = () => {
 					<Navbar />
 					<Switch>
 						<Route exact path="/">
+							<Form />
 							<Home />
 						</Route>
 						<Route exact path="/demo">
@@ -41,16 +43,16 @@ const Layout = () => {
 								/*component={Planet}*/
 							/>
 						</Route>
-						<Route exact path="/character/">
+						<Route exact path="/people/">
 							<Character
 								cImg="https://www.denofgeek.com/wp-content/uploads/2017/01/star-wars-droids.jpg?fit=1200%2C680"
 								/*component={Character}*/
 							/>
 						</Route>
-						<Route path="/infoCharacter/:myId">
+						<Route path="/infoCharacter/:fid">
 							<InfoCharacter />
 						</Route>
-						<Route path="/infoPlanet/:myId">
+						<Route path="/infoPlanet/:fid">
 							<InfoPlanet />
 						</Route>
 					</Switch>

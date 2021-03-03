@@ -10,7 +10,7 @@ export const InfoCharacter = () => {
 	const param = useParams();
 	const paramByID =
 		store.characters[
-			param.myId
+			param.fid
 		]; /*obtenemos nuestro personaje por medio del ID para luego poderlo mostrar en un card con los los atributos obtenidos array usando parametro*/
 
 	return (
@@ -18,10 +18,7 @@ export const InfoCharacter = () => {
 			<div className="row">
 				<div className="col">
 					<Card style={{ width: "18rem" }}>
-						<Card.Img
-							variant="top"
-							src="https://cdn.vox-cdn.com/thumbor/4CfA0tz-b4KaLS8rJzk3NwQoIvc=/85x0:1014x619/1200x800/filters:focal(85x0:1014x619)/cdn.vox-cdn.com/uploads/chorus_image/image/12771259/ea_star_wars_darth_vader.0.jpg"
-						/>
+						<Card.Img variant="top" src={paramByID.image} />
 					</Card>
 				</div>
 				<div className="col">
@@ -63,7 +60,7 @@ export const InfoCharacter = () => {
 				</table>
 				<hr />
 				<div className="col text-center">
-					<Link to="/character">
+					<Link to="/people">
 						<button className="btn btn-warning">Back 2 Characters</button>
 					</Link>
 					{/* boton que nos redirige a la coleccion de personajes */}

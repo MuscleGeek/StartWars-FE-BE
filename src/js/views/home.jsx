@@ -7,7 +7,7 @@ export const Home = () => (
 	<div className="container text-center mt-5">
 		<Carousel>
 			<Carousel.Item interval={1000}>
-				<Link to="/character/">
+				<Link to="/people/">
 					<img
 						className="d-block w-100"
 						src="https://fondosmil.com/fondo/23598.jpg"

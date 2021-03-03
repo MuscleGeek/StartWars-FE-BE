@@ -20,7 +20,7 @@ export const Character = props => {
 				) => (
 					<Col md={3} className="mt-1 mb-2" key={i}>
 						<Card style={{ width: "18rem" }}>
-							<Card.Img variant="top" src={props.cImg} />
+							<Card.Img variant="top" src={character.image} />
 							<Card.Body>
 								<Card.Title>
 									<h1>{character.name}</h1>
@@ -53,8 +53,4 @@ export const Character = props => {
 			</Row>
 		</Container>
 	);
-};
-
-Character.propTypes = {
-	cImg: PropTypes.any
 };

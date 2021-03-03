@@ -8,11 +8,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			loadCharacters: () => {
 				//obtiener personajes obteniendo el result
-				fetch("https://swapi.dev/api/people/")
+				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/people/")
 					.then(res => res.json())
 					.then(data => {
 						console.table("Fetching Planet data:", data);
-						setStore({ characters: data.results });
+						setStore({ characters: data });
 					})
 					.catch(err => console.error(err));
 			},
