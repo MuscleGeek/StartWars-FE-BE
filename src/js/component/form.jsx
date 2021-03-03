@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 
 export const Form = () => {
+	const [name, setName] = useState("");
+	const [gender, setGender] = useState("");
+	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
+
+	const SubmitData = e => {
+		e.preventDefault();
+		if (email === "" || password === "" || gender === "" || email === "") {
+			alert("Datos incompletos o invalidos");
+			console.table(name, gender, password, email);
+		}
+	};
 	return (
 		<MDBContainer>
 			<MDBRow>
 				<MDBCol md="6">
-					<form>
+					<form onSubmit={e => e.SubmitData(e)}>
 						<p className="h5 text-center mb-4">Sign in</p>
 						<div className="grey-text">
 							<MDBInput
@@ -36,17 +49,17 @@ export const Form = () => {
 						<label htmlFor="defaultFormRegisterGenderEx" className="grey-text">
 							Gender
 						</label>
-						<input type="email" id="defaultFormRegisterGenderEx" className="form-control" />
+						<input type="text" id="defaultFormRegisterGenderEx" className="form-control" />
 						<br />
 						<label htmlFor="defaultFormRegisterPasswordEx" className="grey-text">
 							Password
 						</label>
-						<input type="email" id="defaultFormRegisterPasswordEx" className="form-control" />
+						<input type="password" id="defaultFormRegisterPasswordEx" className="form-control" />
 						<br />
 						<label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
 							Email
 						</label>
-						<input type="password" id="defaultFormRegisterEmailEx" className="form-control" />
+						<input type="email" id="defaultFormRegisterEmailEx" className="form-control" />
 						<div className="text-center mt-4">
 							<MDBBtn color="unique" type="submit">
 								Register
