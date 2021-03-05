@@ -6,9 +6,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: []
 		},
 		actions: {
+			login: (name, pass) => {
+				//getting token jwt-validation
+				fetch(`https://3000-coral-pelican-mixyy8yh.ws-us03.gitpod.io/signin`)
+					.then(res => {
+						if (res.ok) res.json();
+						else if (res.status === 401) {
+							console.table("Invalid credentials");
+						} else if (res.status === 400) {
+							console.table("Invalid email or password format");
+						} else throw Error("Unknown error");
+					})
+					.then(data => {
+						localStorage.setItem("jwt-token", data.token);
+					})
+					.catch(error => console.error("Uknown error around!", error));
+            },
+            signup: (name,gender,password,email) => {
+                //const data = {name:name,gender:gender,password:password,email:email}
+                fetch(`https://3000-coral-pelican-mixyy8yh.ws-us03.gitpod.io/register`,{
+                    method = 'POST',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({name:name,gender:gender,password:password,email:email})
+                })
+                    .then(response =>response.json())
+                    .then(data => {console.table("success", data);
+                               setRedirect(true);
+                    })
+                    .catch(error => {console.table("Error", error)
+                    });   
+            },
 			loadCharacters: () => {
 				//obtiener personajes obteniendo el result
-				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/people")
+				fetch("https://3000-coral-pelican-mixyy8yh.ws-us03.gitpod.io/people")
 					.then(res => res.json())
 					.then(data => {
 						console.table("Fetching Planet data:", data);
@@ -18,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadPlanets: () => {
 				//obtiene todos los planetas por medio del result
-				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/planet")
+				fetch("https://3000-coral-pelican-mixyy8yh.ws-us03.gitpod.io/planet")
 					.then(res => res.json())
 					.then(data => {
 						console.table("Fetching Planets data: ", data);
@@ -28,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadPlanetsbyID: id => {
 				//obtener el planeta por ID @view
-				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/planet" + id)
+				fetch("https://3000-coral-pelican-mixyy8yh.ws-us03.gitpod.io/planet" + id)
 					.then(res => res.json())
 					.then(data => {
 						console.table("Fetching Planets data: ", data);
@@ -38,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadCharactersbyID: id => {
 				//obtener el personaje por ID @view
-				fetch("https://3000-tomato-wildebeest-x2kvinqb.ws-us03.gitpod.io/people" + id)
+				fetch("https://3000-coral-pelican-mixyy8yh.ws-us03.gitpod.io/people" + id)
 					.then(res => res.json())
 					.then(data => {
 						console.log("Fetching Planets data: ", data);
