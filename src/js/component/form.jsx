@@ -6,30 +6,32 @@ import "../../styles/index.scss";
 
 export const Form = () => {
 	const { actions, store } = useContext(Context);
+	//const { redirect, setRedirect } = UseState(false);
 	const [name, setName] = useState("");
 	const [gender, setGender] = useState("");
-	const [password, setPassword] = useState("");
 	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	const SubmitRegisterUser = e => {
 		//Validation Block 4 Signup Form
 		e.preventDefault();
-		if (name === "" || gender === "" || password === "" || email === "") {
+		if (name === "" || gender === "" || email === "" || password === "") {
 			alert("Datos incompletos o invalidos");
 		} else {
-			console.log(name, gender, password, email);
-			actions.signup(name, gender, password, email);
+			alert(name, gender, email, password);
+			actions.signup(name, gender, email, password);
+			setEmail;
 		}
 	};
 
 	const SubmitLoginUser = e => {
 		//Validation Block 4 Login Form
 		e.preventDefault();
-		if (password === "" || email === "") {
+		if (email === "" || password === "") {
 			alert("Datos incompletos o invalidos");
 		} else {
-			console.table(password, email);
-			actions.login(password, email);
+			console.table(email, password);
+			actions.login(email, password);
 		}
 	};
 	return (
@@ -41,6 +43,7 @@ export const Form = () => {
 							<p className="h5 text-center mb-4">Sign in</p>
 							<div className="grey-text">
 								<MDBInput
+									id="email"
 									label="Type your email"
 									icon="envelope"
 									group
@@ -51,6 +54,7 @@ export const Form = () => {
 									onChange={e => setEmail(e.target.value)}
 								/>
 								<MDBInput
+									id="password"
 									label="Type your password"
 									icon="lock"
 									group
@@ -65,6 +69,7 @@ export const Form = () => {
 								</MDBBtn>
 							</div>
 						</form>
+						{store.bool ? <Redirect to="/home" /> : ""}
 					</MDBCol>
 					<MDBCol md="6">
 						<form onSubmit={e => SubmitRegisterUser(e)}>
@@ -89,16 +94,6 @@ export const Form = () => {
 								onChange={e => setGender(e.target.value)}
 							/>
 							<br />
-							<label htmlFor="defaultFormRegisterPasswordEx" className="grey-text">
-								Password
-							</label>
-							<input
-								type="password"
-								id="defaultFormRegisterPasswordEx"
-								className="form-control"
-								onChange={e => setPassword(e.target.value)}
-							/>
-							<br />
 							<label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
 								Email
 							</label>
@@ -107,6 +102,16 @@ export const Form = () => {
 								id="defaultFormRegisterEmailEx"
 								className="form-control"
 								onChange={e => setEmail(e.target.value)}
+							/>
+							<br />
+							<label htmlFor="defaultFormRegisterPasswordEx" className="grey-text">
+								Password
+							</label>
+							<input
+								type="password"
+								id="defaultFormRegisterPasswordEx"
+								className="form-control"
+								onChange={e => setPassword(e.target.value)}
 							/>
 							<div className="text-center mt-4">
 								<MDBBtn color="unique" type="submit" onClick={e => SubmitRegisterUser(e)}>
